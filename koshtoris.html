@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<meta charset="UTF-8">
+	<title>SENSE profile</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Jura&display=swap" rel="stylesheet">
+</head>
+<body class="body2">
+    <style>
+        .body2 {
+            margin: 0;
+			padding: 0;
+			background-image:  linear-gradient(rgba(106, 105, 105, 0.6), rgba(178, 178, 178, 0.7)),url("page.JPG");
+			background-size: 100% 100%;
+
+			font-size: 30px;
+
+			font-family: 'Jura', sans-serif;
+			align-content: center;
+    
+}
+
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+body {
+			margin: 0;
+			padding: 0;
+			background-image:  linear-gradient(rgba(174, 174, 174, 0.6), rgba(222, 222, 222, 0.7)),url("hall.png");
+			background-size: 100% 100%;
+
+			font-size: 30px;
+
+			font-family: 'Jura', sans-serif;
+			align-content: center;
+			
+		}
+        @keyframes gradient {
+			0% {
+				background-position: 0% 50%;
+			}
+			50% {
+				background-position: 100% 50%;
+			}
+			100% {
+				background-position: 0% 50%;
+			}
+		}
+		
+		
+		.header2 {
+		
+			color: #030303;
+			padding: 1px;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		
+			border-bottom: 1px solid #000000;
+			
+			background-color: #f3f3f3;
+			
+			opacity: 50%;
+			font-family: 'Jura', sans-serif;
+			align-content: center;
+			
+			box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.5); /* додаємо тінь для ефекту нечітких бортів */
+            transition: box-shadow 0.5s ease-out; /* додаємо транзицію на зміну box-shadow */
+		}
+		
+
+
+        .header2:hover {
+			opacity: 80%;
+            box-shadow: 0px 0px 10px rgba(142, 127, 110, 0.5); /* змінюємо box-shadow при наведенні мишки на елемент */
+        }
+        input{
+			
+			border: none;
+			background: none;
+		}
+		.logo {
+	
+            margin-left: 40%;
+			font-size: 60%;
+			
+			text-transform: uppercase;
+			justify-content: center;
+		}
+		.nav {
+			display: flex;
+			flex-wrap: wrap;
+			list-style: none;
+			margin: 0;
+			padding: 0;
+		}
+		.nav li {
+			margin: 0 10px;
+		}
+		.nav a {
+			
+			font-size: 20px;
+			
+			color: #040404;
+			text-decoration: none;
+			font-weight: bold;
+			text-transform: uppercase;
+			padding: 20px;
+			transition: all 0.2s ease-in-out;
+		}
+		.nav a:hover {
+			font-size: 23px;
+			
+		}
+
+
+        .nav a.active {
+            background: linear-gradient(-45deg, #e1e1e1, #ffffff, #bebebe, #717171);
+			background-size: 400% 400%;
+			animation: gradient 15s ease infinite;
+			border-radius: 50px;
+            color: rgb(0, 0, 0);
+			opacity: 100%;
+        }
+  
+
+
+        #logo-container img {
+			
+			position: fixed;
+			top: -10px;
+			left: -10px;
+			width: 100px;
+			height: 100px;
+			
+			margin: 10px;
+			padding: 5px;
+		 }
+ 
+.footer {
+
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30%;
+}
+.main {
+    border-radius: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    /* display: flex; */
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(-45deg,  #ede0dc, #d4c6c6, #d2e1e6, #ccd5d3);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+}
+.main2 {
+    top: 30px; 
+    border-radius: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    /* display: flex; */
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    
+    display: flex;
+    flex-direction: column;
+   
+    background-color: #f3f3f3;
+}
+.article{
+    width: 80%;
+    
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+#section1 {
+
+    text-align: center;
+    
+    margin-bottom: 20px;
+    width: 50%;
+}
+#section2 {
+
+    text-align: center;
+  
+    margin-bottom: 20px;
+    width: 50%;
+}
+.section {
+
+    text-align: center;
+    
+    margin-bottom: 20px;
+    width: 80%;
+}
+.section h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+.section p {
+    line-height: 1.5;
+}
+@media (max-width: 767px) {
+    .header {
+        width: 100%;
+        height: 100px;
+        flex-direction: column;
+        align-items: center;
+    }
+    .header2 {
+        width: 100%;
+        height: 100px;
+        flex-direction: column;
+        align-items: center;
+    }
+    .logo {
+        font-size: 70%;
+        margin-bottom: 10px;
+
+    }
+    .nav {
+        font-size: 60%;
+        margin-top: -30px;
+    
+        text-align: center;
+        flex-direction: column;
+    }
+    .nav li {
+        margin: 10px 0;
+    }
+    .main {
+        flex-direction: column;
+        align-items: center;
+    }
+    .section {
+        
+        flex-basis: 80%;
+        text-align: center;
+    }
+    img {
+    width: 10%;
+    height: auto;
+    
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    }
+    #logo-container img {
+        left: -10px;
+        width: 80px;
+        height: 80px;
+        
+     }
+}
+
+  
+  .form-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+  }
+  
+  .form-wrapper > div {
+    margin: 10px;
+  }
+  
+  textarea {
+    font-size: 14px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    resize: vertical;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  #designer-note2{
+    margin-top: 10px;
+    background: none;
+    box-shadow: 5px 5px 5px rgb(255, 253, 253); /* Додаємо затемнення */
+
+  }
+            
+  p {
+    text-align: left;
+    color:rgb(0, 0, 0);
+    font-size: 20px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    resize: vertical;
+    width: 100%;
+    box-sizing: border-box;
+    box-shadow: 2px 2px 2px #ffffff; 
+    
+  }
+
+  h2{
+    color: rgb(0, 0, 0);
+  }
+  h3 {
+    font-size: 14px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    resize: vertical;
+    width: 100%;
+    box-sizing: border-box;
+    box-shadow: 2px 2px 2px #ffffff; 
+  }
+  canvas {
+    width: 100%;
+    height: 100px;
+  /* border: 1px solid rgb(255, 254, 254); */
+}
+
+
+
+
+#divP1{
+    display: flex;
+}
+#divP2{
+    display: flex;
+}
+#divP3{
+    display: flex;
+}
+#divP4{
+    display: flex;
+}
+#divP5{
+    display: flex;
+}
+#divP6{
+    display: flex;
+}
+#divP7{
+    text-align: left;
+    width: 80%;
+    display: flex;
+}
+#p11{
+    text-align: center;
+    width: 10%;
+    background-color: rgb(135, 151, 111);
+    
+}
+#p22{
+    text-align: center;
+    width: 10%;
+    background-color: none;
+    
+}
+#p33{
+    text-align: center;
+    width: 10%;
+    background-color: none;
+    
+}
+#p44{
+    text-align: center;
+    width: 10%;
+    background-color: none;
+    
+}
+#p55{
+    text-align: center;
+    width: 10%;
+    background-color: none;
+    
+}
+#p66{
+    text-align: center;
+    width: 10%;
+    background-color: none;
+    
+}
+#p111{
+    text-align: center;
+    width: 10%;
+    background-color: none;
+    
+}
+#p222{
+    text-align: center;
+    width: 10%;
+    background-color: none;
+    
+}
+#p333{
+    text-align: center;
+    width: 10%;
+    background-color: none;
+    
+}
+#p444{
+    text-align: center;
+    width: 10%;
+    background-color: none;
+    
+}
+#p555{
+    text-align: center;
+    width: 10%;
+    background-color: none;
+    
+}
+#p666{
+    text-align: center;
+    width: 10%;
+    background-color: none;
+    
+}
+
+.loader {
+    display: inline-block;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid rgb(135, 151, 111);
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    animation: spin 2s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+#startTimeField{
+margin-left: 10%;
+font-size: 20px;
+}
+#outputField{
+margin-left: 10%;
+font-size: 20px;
+}
+#finishTimeField{
+margin-left: 10%;
+font-size: 20px;
+}
+
+
+.phone-btn {
+opacity: 60%;
+color: rgb(0, 0, 0);;
+right: 20px;
+bottom: 20px;
+border:none;
+box-shadow: none;
+width: 200px;
+height: 50px;
+line-height: 42px;
+-webkit-perspective: 230px;
+perspective: 230px;
+font-size: 20px;
+}
+.phone-btn span {
+background: rgb(255, 255, 255);
+background: linear-gradient(0deg, rgb(194, 194, 194) 0%, rgb(255, 255, 255) 100%);
+display: block;
+position: absolute;
+width: 200px;
+height: 50px;
+box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+7px 7px 20px 0px rgba(0,0,0,.1),
+4px 4px 5px 0px rgba(0,0,0,.1);
+border-radius: 5px;
+margin:0;
+text-align: center;
+-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+box-sizing: border-box;
+-webkit-transition: all .3s;
+transition: all .3s;
+}
+.phone-btn span:nth-child(1) {
+box-shadow:
+-7px -7px 20px 0px #fff9,
+-4px -4px 5px 0px #fff9,
+7px 7px 20px 0px #0002,
+4px 4px 5px 0px #0001;
+-webkit-transform: rotateX(90deg);
+-moz-transform: rotateX(90deg);
+transform: rotateX(90deg);
+-webkit-transform-origin: 50% 50% -20px;
+-moz-transform-origin: 50% 50% -20px;
+transform-origin: 50% 50% -20px;
+}
+.phone-btn span:nth-child(2) {
+-webkit-transform: rotateX(0deg);
+-moz-transform: rotateX(0deg);
+transform: rotateX(0deg);
+-webkit-transform-origin: 50% 50% -20px;
+-moz-transform-origin: 50% 50% -20px;
+transform-origin: 50% 50% -20px;
+}
+.phone-btn:hover span:nth-child(1) {
+box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+7px 7px 20px 0px rgba(0,0,0,.1),
+4px 4px 5px 0px rgba(0,0,0,.1);
+-webkit-transform: rotateX(0deg);
+-moz-transform: rotateX(0deg);
+transform: rotateX(0deg);
+}
+.phone-btn:hover span:nth-child(2) {
+box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+7px 7px 20px 0px rgba(0,0,0,.1),
+4px 4px 5px 0px rgba(0,0,0,.1);
+color: transparent;
+-webkit-transform: rotateX(-90deg);
+-moz-transform: rotateX(-90deg);
+transform: rotateX(-90deg);
+}
+
+
+.mail-btn {
+opacity: 60%;
+color: rgb(0, 0, 0);;
+/* right: 100px;
+bottom: 100px; */
+border:none;
+box-shadow: none;
+/* width: 200px;
+height: 100px; */
+line-height: 42px;
+-webkit-perspective: 230px;
+perspective: 230px;
+font-size: 50%;
+}
+.mail-btn span {
+top:10px;
+left: 10px;
+background: rgb(255, 255, 255);
+background: linear-gradient(0deg, rgb(194, 194, 194) 0%, rgb(255, 255, 255) 100%);
+display: block;
+position: absolute;
+width: 100%;
+height: 90px;
+box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+7px 7px 20px 0px rgba(0,0,0,.1),
+4px 4px 5px 0px rgba(0,0,0,.1);
+border-radius: 5px;
+margin:0;
+text-align: center;
+-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+box-sizing: border-box;
+-webkit-transition: all .3s;
+transition: all .3s;
+}
+.mail-btn span:nth-child(1) {
+box-shadow:
+-7px -7px 20px 0px #fff9,
+-4px -4px 5px 0px #fff9,
+7px 7px 20px 0px #0002,
+4px 4px 5px 0px #0001;
+-webkit-transform: rotateX(90deg);
+-moz-transform: rotateX(90deg);
+transform: rotateX(90deg);
+-webkit-transform-origin: 50% 50% -20px;
+-moz-transform-origin: 50% 50% -20px;
+transform-origin: 50% 50% -20px;
+}
+.mail-btn span:nth-child(2) {
+-webkit-transform: rotateX(0deg);
+-moz-transform: rotateX(0deg);
+transform: rotateX(0deg);
+-webkit-transform-origin: 50% 50% -20px;
+-moz-transform-origin: 50% 50% -20px;
+transform-origin: 50% 50% -20px;
+}
+.mail-btn:hover span:nth-child(1) {
+box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+7px 7px 20px 0px rgba(0,0,0,.1),
+4px 4px 5px 0px rgba(0,0,0,.1);
+-webkit-transform: rotateX(0deg);
+-moz-transform: rotateX(0deg);
+transform: rotateX(0deg);
+}
+.mail-btn:hover span:nth-child(2) {
+box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+7px 7px 20px 0px rgba(0,0,0,.1),
+4px 4px 5px 0px rgba(0,0,0,.1);
+color: transparent;
+-webkit-transform: rotateX(-90deg);
+-moz-transform: rotateX(-90deg);
+transform: rotateX(-90deg);
+}
+
+#submit-button{
+width: 20%;
+height: 100%;
+}
+#designer-note2{
+
+width: 80%;
+}
+
+#exchange{
+font-size: 15px;
+color: #040404;
+text-decoration: none;
+}
+#exchange:hover{
+color: #8b1616;
+text-decoration:underline ;
+}
+    </style>
+	<header class="header2">
+        
+        <div class="logo">Не дуже приємна сторінка:)</div>
+      
+        <nav class="nav">
+            <ul>
+                <li><a href="/index">Етапи проектування</a><a href="/koshtoris" class="active">Кошторис</a><a href="/offers">Пропозиції</a></li>
+           
+            </ul>
+        </nav>
+    </header>
+
+	<div id="logo-container">
+        <img src="logo.svg" alt="Logo">
+     </div>
+		
+	 <article class="article">
+        <section class="section" id="section1">
+            <label for="customer-name">Замовник:</label>
+            <h3 id="cus_name">абзац</h3>
+        </section>
+        <section class="section" id="section2">
+            <label for="customer-name">Дизайнер:</label>
+            <h3 id="designer">абзац</h3>
+        </section>
+
+                
+               
+    </article>
+
+	<main class="main2">   
+		<section class="section">
+		<h2>Кошторис витрачений на даний момент ( $ )</h2>
+		<div id="divP1"><p id="p1">-Cанвузол</p><p id="p111"></p></div>
+		<div id="divP2"><p id="p2">-Коридор</p><p id="p222"></p></div>
+		<div id="divP3"><p id="p3">-Кімнати</p><p id="p333"></p></div>
+		<div id="divP4"><p id="p4">-Кухня</p><p id="p444"></p></div>
+		<div id="divP5"><p id="p5">-Інші витрати</p><p id="p555"></p></div>
+		
+		</section>
+	
+
+		<a href="https://minfin.com.ua/ua/currency/" target="_blank" id="exchange">Поточний обмінний курс USD/EUR</a>
+        <div id="exchange-rate"></div>
+        <div id="full-price-usd"></div>
+        <div id="full-price"></div>
+        
+		<script>
+const xhr1 = new XMLHttpRequest();
+xhr1.open('GET', '/who');
+xhr1.onload = () => {
+  const who = JSON.parse(xhr1.responseText);
+  document.getElementById('cus_name').textContent = who.name;
+  document.getElementById('designer').textContent = who.designer;
+  
+};
+xhr1.send();
+
+
+const xhr = new XMLHttpRequest();
+xhr.open('GET', '/prices');
+xhr.onload = () => {
+  const prices = JSON.parse(xhr.responseText);
+  document.getElementById('p111').textContent = prices.bathroom;
+  document.getElementById('p222').textContent = prices.hall;
+  document.getElementById('p333').textContent = prices.rooms;
+  document.getElementById('p444').textContent = prices.kitchen;
+  document.getElementById('p555').textContent = prices.others;
+
+  
+  var sumprice = Number(prices.bathroom)+Number(prices.hall)+Number(prices.rooms)+Number(prices.kitchen)+Number(prices.others);
+  const app_id = '9d1d2d2d516247169257fa118129ed35'
+             const url = `https://openexchangerates.org/api/latest.json?app_id=${app_id}&base=USD&symbols=UAH`
+
+             fetch(url)
+                .then(response => {
+                 if (!response.ok) {
+                   throw new Error(`HTTP error! status: ${response.status}`)
+                  }
+                return response.json()
+                 })
+          .then(data => {
+          const rate = data.rates.UAH.toFixed(2)
+          const exchangeRateDiv = document.getElementById('exchange-rate')
+         exchangeRateDiv.innerHTML = `1 USD = ${rate} UAH`
+
+         const fullPriceUsd = document.getElementById('full-price-usd')
+         const fullPrice = document.getElementById('full-price')
+         var uahpricefull = sumprice * rate;
+         var uahprice = Math.floor(Number(uahpricefull));
+         fullPriceUsd.innerHTML = `Загальна ціна в доларах - ${sumprice} USD`
+         fullPrice.innerHTML = `Загальна ціна в гривнях - ${uahprice} UAH`
+          })
+          .catch(error => console.error(error))
+};
+xhr.send();
+
+
+
+      
+         const links = document.querySelectorAll('nav a');
+
+         links.forEach(link => {
+           if (link.href === window.location.href) {
+           link.classList.add('active');
+        }});
+        </script>	
+	   
+		  
+	</main>
+	<footer class="footer">
+		&copy; 2023 Мій сайт
+	</footer>
+	
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Адміністратор</title>
+    <link href="https://fonts.googleapis.com/css?family=Jura&display=swap" rel="stylesheet">
+  </head>
+
+  <body>
+    <img src="logo.svg" alt="Logo" width="15%" height="auto">
+  
+
+  
+        <style>
+            body {
+                margin: 0;
+                padding: 5px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                font-family: 'Jura', sans-serif;
+                animation: gradient 15s ease infinite; 
+			    background-image: url("hall.png"); 
+			    background-size: 250% 300%;
+        
+            }
+            @keyframes gradient {
+			0% {
+				background-position: 0% 50%;
+			}
+			50% {
+				background-position: 100% 50%;
+			}
+			100% {
+				background-position: 0% 50%;
+			}
+		}
+		
+.change-container {
+    opacity: 95%; 
+   background-color: #ededed;
+  
+  border-radius: 10px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+  padding: 40px;
+  width: 140%;
+  height: 100%;
+  max-width: 600px;
+  text-align: center;
+  justify-content: center;
+  /* border: 1px solid #117042; */
+}
+
+h1 {
+    margin-top: 20%;
+  font-size: 27px;
+  text-align: center;
+}
+p {
+    
+    font-size: 150%;
+}
+form {
+  display: flex;
+  flex-direction: column;
+ 
+}
+
+label {
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="cusId"] {
+  
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  margin-bottom: 10px;
+}
+
+button[type="submitChange"] {
+    margin: 5%;
+  background-color: #117042;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+}
+button[type="submitChange"]:hover{
+    background-color: #114770;
+
+
+} 
+#promo {
+  padding: 20px;
+  margin: 5%;
+  /* width: 190%; */
+  height: 100%;
+  max-width: 400px;
+  /* width: 30%; */
+  /* background-color: rgb(57, 56, 56); */
+  opacity: 95%; 
+   background-color: #ededed;
+  opacity: 80%;
+  /* color: #eaeaea; */
+  border-radius: 10px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  justify-content: center;
+  
+}
+
+
+
+        </style>
+
+
+        <div class="change-container">
+        <p>Адміністраторе, привіт! Тут можна оновлювати дані щодо проєкту для подальшої комуціканії із клієнтом
+        </p>
+      <h1>Внесення змін</h1>
+     <form action="/admin" method="POST">
+      <label for="cusId">ID Замовника:</label>
+      <input type="number" name="cusId">
+
+      <label for="cusTable">Таблиця:</label>
+      <input type="text" name="cusTable">
+
+      <label for="cusCol">Стовпець:</label>
+      <input type="cusCol" name="cusCol">
+
+      <label for="cusVal">Значення:</label>
+      <input type="cusVal" name="cusVal">
+
+      <button type="submitChange">Внести зміни</button>
+    </form>
+   
+  
+    </div>
+    
+    
+  </body>
+</html>

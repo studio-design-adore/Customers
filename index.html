@@ -1,0 +1,786 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>SENSE profile</title>
+    <script src="node_modules/pg-browserify/browser.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Jura&display=swap" rel="stylesheet">
+</head>
+<body>
+	
+    <style>
+         body {
+			margin: 0;
+			padding: 0;
+			background-image:  linear-gradient(rgba(106, 105, 105, 0.6), rgba(178, 178, 178, 0.7)),url("hall.png");
+			background-size: 100% 100%;
+
+			font-size: 30px;
+
+			font-family: 'Jura', sans-serif;
+			align-content: center;
+			
+		}
+        @keyframes gradient {
+			0% {
+				background-position: 0% 50%;
+			}
+			50% {
+				background-position: 100% 50%;
+			}
+			100% {
+				background-position: 0% 50%;
+			}
+		}
+		
+		
+		.header {
+		
+			color: #030303;
+			padding: 1px;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		
+			border-bottom: 1px solid #000000;
+			background-color: #f3f3f3;
+			opacity: 50%;
+			font-family: 'Jura', sans-serif;
+			align-content: center;
+			
+			box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.5); /* додаємо тінь для ефекту нечітких бортів */
+            transition: box-shadow 0.5s ease-out; /* додаємо транзицію на зміну box-shadow */
+		}
+		
+
+
+        .header:hover {
+			opacity: 80%;
+            box-shadow: 0px 0px 10px rgba(142, 127, 110, 0.5); /* змінюємо box-shadow при наведенні мишки на елемент */
+        }
+		
+	
+		input{
+			
+			border: none;
+			background: none;
+		}
+		.logo {
+	
+            margin-left: 40%;
+			font-size: 80%;
+			
+			text-transform: uppercase;
+			justify-content: center;
+		}
+		.nav {
+			display: flex;
+			flex-wrap: wrap;
+			list-style: none;
+			margin: 0;
+			padding: 0;
+		}
+		.nav li {
+			margin: 0 10px;
+		}
+		.nav a {
+			
+			font-size: 20px;
+			
+			color: #040404;
+			text-decoration: none;
+			font-weight: bold;
+			text-transform: uppercase;
+			padding: 20px;
+			transition: all 0.2s ease-in-out;
+		}
+		.nav a:hover {
+			font-size: 23px;
+		}
+
+
+        .nav a.active {
+			background: linear-gradient(-45deg, #e1e1e1, #ffffff, #bebebe, #717171);
+			background-size: 400% 400%;
+			animation: gradient 15s ease infinite;
+            
+			border-radius: 50px;
+            color: rgb(0, 0, 0);
+			opacity: 100%;
+        }
+		  
+		
+		
+		#logo-container img {
+			
+			position: fixed;
+			top: -10px;
+			left: -10px;
+			width: 100px;
+			height: 100px;
+			
+			margin: 10px;
+			padding: 5px;
+		 }
+		 
+		.footer {
+
+			background-color: #333;
+			color: #fff;
+			padding: 10px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			font-size: 30%;
+		}
+		.main {
+			/* border-radius: 100px; */
+            color: #fff;
+			width: 97%;
+			margin: 0 auto;
+			padding: 20px;
+	        text-align: center;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			align-items: center;
+			
+			display: flex;
+            flex-direction: column;
+			background-color: #333;
+			opacity: 90%;
+			
+			box-shadow: 5px 5px 30px rgba(255, 255, 255, 0.5); /* додаємо тінь для ефекту нечітких бортів */
+            transition: box-shadow 0.5s ease-out;
+
+		}
+		
+		.main2 {
+		    top: 30px; 
+			border-radius: 20px;
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 20px;
+			
+			flex-wrap: wrap;
+			justify-content: space-between;
+			align-items: center;
+			
+			display: flex;
+            flex-direction: column;
+            
+			background-color: #f3f3f3;
+		}
+		.article{
+			width: 80%;
+			/* max-width: 1200px; */
+			margin: 0 auto;
+			padding: 20px;
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			align-items: center;
+			text-align: center;
+		}
+		#section1 {
+		
+			text-align: center;
+			/* flex-basis: 30%; */
+			margin-bottom: 20px;
+			width: 50%;
+		}
+		#section2 {
+		
+			text-align: center;
+			/* flex-basis: 30%; */
+			margin-bottom: 20px;
+			width: 50%;
+		}
+		.section {
+		
+			text-align: center;
+			/* flex-basis: 30%; */
+			margin-bottom: 20px;
+			width: 80%;
+		}
+		.section h2 {
+			font-size: 24px;
+			margin-bottom: 10px;
+		}
+		.section p {
+			line-height: 1.5;
+		}
+		@media (max-width: 767px) {
+			.header {
+				width: 100%;
+				height: 100px;
+				flex-direction: column;
+				align-items: center;
+			}
+			.header2 {
+				width: 100%;
+				height: 100px;
+				flex-direction: column;
+				align-items: center;
+			}
+			.logo {
+				font-size: 70%;
+				margin-bottom: 10px;
+
+			}
+			.nav {
+				font-size: 60%;
+				margin-top: -30px;
+			
+				text-align: center;
+				flex-direction: column;
+			}
+			.nav li {
+				margin: 10px 0;
+			}
+			.main {
+				flex-direction: column;
+				align-items: center;
+			}
+			.section {
+				
+				flex-basis: 80%;
+				text-align: center;
+			}
+            img {
+            width: 10%;
+            height: auto;
+            
+            margin-top: 10px;
+            margin-bottom: 10px;
+            margin-left: 20px;
+            }
+			#logo-container img {
+				left: -10px;
+				width: 80px;
+				height: 80px;
+				
+			 }
+		}
+       
+          
+          .form-wrapper {
+			width: 80%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+			
+          }
+          
+          .form-wrapper > div {
+            margin: 10px;
+          }
+          
+          textarea {
+			color: white;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+            resize: vertical;
+            width: 100%;
+            box-sizing: border-box;
+          }
+		  #designer-note2{
+			margin-top: 10px;
+			background: none;
+			box-shadow: 5px 5px 5px rgb(255, 253, 253); /* Додаємо затемнення */
+
+		  }
+                    
+          p {
+			text-align: left;
+			color:rgb(0, 0, 0);
+            font-size: 20px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+            resize: vertical;
+            width: 100%;
+            box-sizing: border-box;
+			box-shadow: 2px 2px 2px #ffffff; 
+			
+          }
+
+		  h2{
+			color: rgb(0, 0, 0);
+		  }
+          h3 {
+            font-size: 14px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+            resize: vertical;
+            width: 100%;
+            box-sizing: border-box;
+			box-shadow: 2px 2px 2px #ffffff; 
+          }
+		  canvas {
+			width: 100%;
+			height: 100px;
+		  
+		}
+	
+
+		
+		
+		#divP1{
+			display: flex;
+		}
+		#divP2{
+			display: flex;
+		}
+		#divP3{
+			display: flex;
+		}
+		#divP4{
+			display: flex;
+		}
+		#divP5{
+			display: flex;
+		}
+		#divP6{
+			display: flex;
+		}
+		#divP7{
+			text-align: left;
+			width: 80%;
+			display: flex;
+		}
+		#p11,#p22, #p33,#p44,#p55,#p66{
+			width: 30%;
+            padding: 1%;
+			text-align: center;
+			background-color: rgb(135, 151, 111);
+			
+		}
+		
+		
+		#p111{
+			text-align: center;
+			width: 10%;
+			background-color: none;
+			
+		}
+		#p222{
+			text-align: center;
+			width: 10%;
+			background-color: none;
+			
+		}
+		#p333{
+			text-align: center;
+			width: 10%;
+			background-color: none;
+			
+		}
+		#p444{
+			text-align: center;
+			width: 10%;
+			background-color: none;
+			
+		}
+		#p555{
+			text-align: center;
+			width: 10%;
+			background-color: none;
+			
+		}
+		#p666{
+			text-align: center;
+			width: 10%;
+			background-color: none;
+			
+		}
+
+		.loader {
+			display: inline-block;
+			border: 2px solid #f3f3f3;
+			border-top: 2px solid rgb(135, 151, 111);
+			border-radius: 50%;
+			width: 16px;
+			height: 16px;
+			animation: spin 2s linear infinite;
+		  }
+		  
+		  @keyframes spin {
+			0% { transform: rotate(0deg); }
+			100% { transform: rotate(360deg); }
+		  }
+		  
+
+#outputField{
+	margin-left: 10%;
+	font-size: 20px;
+}
+
+
+.phone-btn {
+	opacity: 60%;
+    color: rgb(0, 0, 0);;
+	right: 20px;
+	bottom: 20px;
+	border:none;
+	box-shadow: none;
+	width: 200px;
+	height: 50px;
+	line-height: 42px;
+	-webkit-perspective: 230px;
+	perspective: 230px;
+	font-size: 20px;
+  }
+  .phone-btn span {
+	background: rgb(255, 255, 255);
+  background: linear-gradient(0deg, rgb(194, 194, 194) 0%, rgb(255, 255, 255) 100%);
+	display: block;
+	position: absolute;
+	width: 200px;
+	height: 50px;
+	box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+	 7px 7px 20px 0px rgba(0,0,0,.1),
+	 4px 4px 5px 0px rgba(0,0,0,.1);
+	border-radius: 5px;
+	margin:0;
+	text-align: center;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	-webkit-transition: all .3s;
+	transition: all .3s;
+  }
+  .phone-btn span:nth-child(1) {
+	box-shadow:
+	 -7px -7px 20px 0px #fff9,
+	 -4px -4px 5px 0px #fff9,
+	 7px 7px 20px 0px #0002,
+	 4px 4px 5px 0px #0001;
+	-webkit-transform: rotateX(90deg);
+	-moz-transform: rotateX(90deg);
+	transform: rotateX(90deg);
+	-webkit-transform-origin: 50% 50% -20px;
+	-moz-transform-origin: 50% 50% -20px;
+	transform-origin: 50% 50% -20px;
+  }
+  .phone-btn span:nth-child(2) {
+	-webkit-transform: rotateX(0deg);
+	-moz-transform: rotateX(0deg);
+	transform: rotateX(0deg);
+	-webkit-transform-origin: 50% 50% -20px;
+	-moz-transform-origin: 50% 50% -20px;
+	transform-origin: 50% 50% -20px;
+  }
+  .phone-btn:hover span:nth-child(1) {
+	box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+	 7px 7px 20px 0px rgba(0,0,0,.1),
+	 4px 4px 5px 0px rgba(0,0,0,.1);
+	-webkit-transform: rotateX(0deg);
+	-moz-transform: rotateX(0deg);
+	transform: rotateX(0deg);
+  }
+  .phone-btn:hover span:nth-child(2) {
+	box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+	 7px 7px 20px 0px rgba(0,0,0,.1),
+	 4px 4px 5px 0px rgba(0,0,0,.1);
+   color: transparent;
+	-webkit-transform: rotateX(-90deg);
+	-moz-transform: rotateX(-90deg);
+	transform: rotateX(-90deg);
+  }
+
+ 
+  .mail-btn {
+	opacity: 60%;
+    color: rgb(0, 0, 0);;
+
+	border:none;
+	box-shadow: none;
+
+	line-height: 42px;
+	-webkit-perspective: 230px;
+	perspective: 230px;
+	font-size: 50%;
+  }
+  .mail-btn span {
+	top:10px;
+	left: 10px;
+	background: rgb(255, 255, 255);
+  background: linear-gradient(0deg, rgb(194, 194, 194) 0%, rgb(255, 255, 255) 100%);
+	display: block;
+	position: absolute;
+	width: 100%;
+	height: 90px;
+	box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+	 7px 7px 20px 0px rgba(0,0,0,.1),
+	 4px 4px 5px 0px rgba(0,0,0,.1);
+	border-radius: 5px;
+	margin:0;
+	text-align: center;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	-webkit-transition: all .3s;
+	transition: all .3s;
+  }
+  .mail-btn span:nth-child(1) {
+	box-shadow:
+	 -7px -7px 20px 0px #fff9,
+	 -4px -4px 5px 0px #fff9,
+	 7px 7px 20px 0px #0002,
+	 4px 4px 5px 0px #0001;
+	-webkit-transform: rotateX(90deg);
+	-moz-transform: rotateX(90deg);
+	transform: rotateX(90deg);
+	-webkit-transform-origin: 50% 50% -20px;
+	-moz-transform-origin: 50% 50% -20px;
+	transform-origin: 50% 50% -20px;
+  }
+  .mail-btn span:nth-child(2) {
+	-webkit-transform: rotateX(0deg);
+	-moz-transform: rotateX(0deg);
+	transform: rotateX(0deg);
+	-webkit-transform-origin: 50% 50% -20px;
+	-moz-transform-origin: 50% 50% -20px;
+	transform-origin: 50% 50% -20px;
+  }
+  .mail-btn:hover span:nth-child(1) {
+	box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+	 7px 7px 20px 0px rgba(0,0,0,.1),
+	 4px 4px 5px 0px rgba(0,0,0,.1);
+	-webkit-transform: rotateX(0deg);
+	-moz-transform: rotateX(0deg);
+	transform: rotateX(0deg);
+  }
+  .mail-btn:hover span:nth-child(2) {
+	box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+	 7px 7px 20px 0px rgba(0,0,0,.1),
+	 4px 4px 5px 0px rgba(0,0,0,.1);
+   color: transparent;
+	-webkit-transform: rotateX(-90deg);
+	-moz-transform: rotateX(-90deg);
+	transform: rotateX(-90deg);
+  }
+  .line {
+  width: 100%;
+  height: 1px;
+  background-color: black;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+
+ #submit-button{
+	width: 30%;
+	height: 100%;
+ }
+ #designer-note2{
+
+	width: 100%;
+ }
+
+ #exchange{
+	font-size: 15px;
+	color: #040404;
+	text-decoration: none;
+ }
+ #exchange:hover{
+	color: #8b1616;
+	text-decoration:underline ;
+ }
+    </style>
+	<header class="header">
+        
+        <div class="logo">Особистий кабінет</div>
+      
+        <nav class="nav">
+            <ul>
+                <li><a href="/index" class="active">Етапи проектування</a><a href="/koshtoris" >Кошторис</a><a href="/offers" >Пропозиції</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div id="logo-container">
+
+        <img src="logo.svg" alt="Logo">
+     </div>
+
+    <article class="article">
+        <section class="section" id="section1">
+            <label for="customer-name">Замовник:</label>
+            <h3 id="cus_name">абзац</h3>
+        </section>
+        <section class="section" id="section2">
+            <label for="customer-name">Дизайнер:</label>
+            <h3 id="designer">абзац</h3>
+        </section>
+
+                
+               
+    </article>
+ 
+    <main class="main2">   
+            <section class="section">
+			<h2>Етапи</h2>
+			<div id="divP1"><p id="p1">-Технічні креслення</p><p id="p11"></p></div>
+            <div id="divP2"><p id="p2">-Чорно-біла 3D модель приміщення з розташуванням меьлів</p><p id="p22"></p></div>
+            <div id="divP3"><p id="p3">-Модель кухні</p><p id="p33"></p></div>
+            <div id="divP4"><p id="p4">-Креслення меблів</p><p id="p44"></p></div>
+            <div id="divP5"><p id="p5">-Візуалізація приміщення</p><p id="p55"></p></div>
+            <div id="divP6"><p id="p6">-Підбір матеріалів</p><p id="p66"></p></div>
+            </section>
+            <section class="section">
+                <h2>Тривалість</h2> 
+                <p id="startTimeField"></p>
+                <p>Сьогодні:<input type="text" id="outputField"></p>
+                <span class="loader"></span><p id="finishTimeField"></p>
+            </section>
+    
+		</main>
+		<div class="line"></div>
+
+		<main class="main"> 
+            <div class="form-wrapper">
+           
+                <div>
+                 
+                </div>
+                <label for="designer-note2">Нотатка до дизайнера:</label>
+                <div id="divP7">
+                  <textarea id="designer-note2" name="designer-note2" rows="4" cols="50"></textarea>
+                  <a id="submit-button"  class="mail-btn"><span>Відправити!</span><span>Надіслати</span></a>
+                </div>
+            </div>
+           
+                <a href="tel:+380662806741" class="phone-btn"><span>Дзвонити!</span><span>Зателефонувати</span></a>
+			</main>
+                
+			
+  <script>
+
+	const xhr1 = new XMLHttpRequest();
+xhr1.open('GET', '/who');
+xhr1.onload = () => {
+  const who = JSON.parse(xhr1.responseText);
+  document.getElementById('cus_name').textContent = who.name;
+  document.getElementById('designer').textContent = who.designer;
+  document.getElementById('startTimeField').textContent = 'Дата початку роботи:  ' + who.start_date;
+  document.getElementById('finishTimeField').textContent = 'Планове завершення проєкту:  ' + who.finish_date;
+  
+};
+xhr1.send();
+  // ------
+  const xhr = new XMLHttpRequest();
+xhr.open('GET', '/levels');
+xhr.onload = () => {
+  const levels = JSON.parse(xhr.responseText);
+  document.getElementById('p11').textContent = levels.first;
+  document.getElementById('p22').textContent = levels.second;
+  document.getElementById('p33').textContent = levels.third;
+  document.getElementById('p44').textContent = levels.fourth;
+  document.getElementById('p55').textContent = levels.fifth;
+  document.getElementById('p66').textContent = levels.sixth;
+};
+xhr.send();
+// ------
+
+
+
+					const submitButton = document.getElementById("submit-button");
+submitButton.addEventListener("click", (event) => {
+  event.preventDefault();
+ 
+  const designerNote2 = document.getElementById("designer-note2").value;
+  const emailBody = `Нотатка до дизайнера: ${designerNote2}`;
+  const emailSubject = "Нова нотатка до дизайнера";
+  const emailRecipient = "baryliaknastja@gmail.com";
+  const emailLink = `mailto:${emailRecipient}?subject=${emailSubject}&body=${emailBody}`;
+  window.open(emailLink);
+});
+
+  // Отримати поточну дату
+  var currentDate = new Date();
+
+  // Отримати рік, місяць та день з дати
+  var year = currentDate.getFullYear();
+  var month = currentDate.getMonth() + 1; // Місяці починаються з 0
+  var day = currentDate.getDate();
+
+  // Створити рядок у форматі 'рік-місяць-день'
+  var dateString = year + '-' + month + '-' + day;
+
+  // Вивести рядок у текстове поле
+  document.getElementById("outputField").value = dateString;
+// }
+
+
+
+// // Get the canvas element and context
+// const canvas = document.getElementById('hot-ball');
+// const context = canvas.getContext('2d');
+
+// // Set the fill style to a gradient
+// const gradient = context.createRadialGradient(100, 100, 0, 100, 100, 100);
+// gradient.addColorStop(0, '#a29399');
+// gradient.addColorStop(1, '#b3cbd4');
+// context.fillStyle = gradient;
+
+// // Define the circle properties
+// let x = 100;
+// let y = 100;
+// let radius = 80;
+// let speed = 2;
+
+// // Define the animation loop
+// function animate() {
+//   // Clear the canvas
+//   context.clearRect(0, 0, canvas.width, canvas.height);
+
+//   // Draw the circle
+//   context.beginPath();
+//   context.arc(x, y, radius, 0, 2 * Math.PI);
+//   context.fill();
+
+//   // Update the circle properties
+//   x += speed;
+//   if (x + radius > canvas.width || x - radius < 0) {
+//     speed = -speed;
+//   }
+
+//   // Request the next animation frame
+//   requestAnimationFrame(animate);
+// }
+
+// // Start the animation loop
+// animate();
+
+// function goToDesign() {
+//   window.location.href = 'index.html';
+// }
+
+const links = document.querySelectorAll('nav a');
+
+links.forEach(link => {
+  if (link.href === window.location.href) {
+    link.classList.add('active');
+  }
+});
+
+
+
+				</script>
+           
+              
+<!-- <canvas id="hot-ball" width="400" height="100"></canvas> -->
+ 
+
+  
+        <footer class="footer">
+            &copy; 2023 SENSE DESIGN STUDIO LVIV
+        </footer>
+
+    </body>
+    </html>        

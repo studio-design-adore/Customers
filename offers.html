@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Товари</title>
+    <script src="node_modules/pg-browserify/browser.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Jura&display=swap" rel="stylesheet">
+	<style>
+		body {
+			
+			font-family: Jura, sans-serif;
+			font-size: 30px;
+			line-height: 1.4;
+			margin: 0;
+			padding: 0;
+			background-image:  linear-gradient(rgba(174, 174, 174, 0.6), rgba(222, 222, 222, 0.7)),url("IMG_6329.png");
+			background-size: 50% 50%;
+
+		}
+		.header {
+		
+		color: #030303;
+		padding: 1px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	
+		border-bottom: 1px solid #000000;
+		
+		background-color: #f3f3f3;
+		
+		opacity: 50%;
+		font-family: 'Jura', sans-serif;
+		align-content: center;
+		
+		box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.5); /* додаємо тінь для ефекту нечітких бортів */
+		transition: box-shadow 0.5s ease-out; /* додаємо транзицію на зміну box-shadow */
+	}
+	
+
+
+	.header:hover {
+		opacity: 80%;
+		box-shadow: 0px 0px 10px rgba(142, 127, 110, 0.5); /* змінюємо box-shadow при наведенні мишки на елемент */
+	}
+	
+
+	input{
+		
+		border: none;
+		background: none;
+	}
+	.logo {
+
+		margin-left: 40%;
+		font-size: 80%;
+		
+		text-transform: uppercase;
+		justify-content: center;
+	}
+	.nav {
+		display: flex;
+		flex-wrap: wrap;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+	.nav li {
+		margin: 0 10px;
+	}
+	.nav a {
+		
+		font-size: 20px;
+		
+		color: #040404;
+		text-decoration: none;
+		font-weight: bold;
+		text-transform: uppercase;
+		padding: 20px;
+		transition: all 0.2s ease-in-out;
+	}
+	.nav a:hover {
+		font-size: 23px;
+		/* background-color: #999999; */
+		/* background-color: lightgray; */
+		/* color: #ffffff; */
+	}
+
+
+	.nav a.active {
+		background: linear-gradient(-45deg, #e1e1e1, #ffffff, #bebebe, #717171);
+			background-size: 400% 400%;
+			animation: gradient 15s ease infinite;
+		border-radius: 50px;
+		color: rgb(0, 0, 0);
+		opacity: 100%;
+	}
+	  
+	
+	
+	#logo-container img {
+		
+		position: fixed;
+		top: -10px;
+		left: -10px;
+		width: 100px;
+		height: 100px;
+		
+		margin: 10px;
+		padding: 5px;
+	 }
+	 
+	
+	 
+		h1 {
+			margin: 0;
+			font-size: 24px;
+			color: #333333;
+		}
+		main {
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 20px;
+		}
+		.product0 {
+			background: linear-gradient(-75deg, #ffffff, #d6d6d6, #ffffff, #665c48);
+			background-size: 400% 400%;
+			animation: gradient 15s ease infinite;
+			/* background-color: #333; */
+            color: #000000;
+		
+			box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+			border-radius: 10px;
+			margin: 20px;
+			font-size: 50%;
+			padding: 5px;
+			
+			align-items: center;
+			
+			text-align: center;
+
+		}
+		@keyframes gradient {
+			0% {
+				background-position: 0% 50%;
+			}
+			50% {
+				background-position: 100% 50%;
+			}
+			100% {
+				background-position: 0% 50%;
+			}
+		}
+		.product {
+			background-color: #ffffff;
+			box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+			margin: 20px;
+			padding: 20px;
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			justify-content: space-between;
+		}
+		.product img {
+			max-width: 300px;
+			height: auto;
+		}
+		.product-info {
+			flex-basis: 60%;
+			margin-right: 20px;
+			color: #333333;
+		}
+		.product-info h2 {
+			margin: 0;
+			font-size: 25px;
+			color: #333333;
+		}
+		.product-info p {
+			font-size: 20px;
+			margin: 10px 0;
+		}
+		.product-price {
+			flex-basis: 30%;
+			text-align: right;
+			font-weight: bold;
+			color: #333333;
+		}
+		.product-price span {
+			display: block;
+			font-size: 24px;
+			margin-top: 5px;
+			color: #cc0000;
+		}
+		@media (max-width: 768px) {
+			.product {
+				flex-direction: column;
+				align-items: flex-start;
+			}
+			.product-info {
+				flex-basis: 100%;
+				margin-right: 0;
+				margin-bottom: 10px;
+			}
+			.product-price {
+				flex-basis: 100%;
+				text-align: left;
+			}
+		}
+        .footer {
+
+background-color: #333;
+color: #fff;
+padding: 10px;
+display: flex;
+justify-content: center;
+align-items: center;
+font-size: 30%;
+}
+
+	</style>
+	<script> 
+	   const links = document.querySelectorAll('nav a');
+
+links.forEach(link => {
+  if (link.href === window.location.href) {
+  link.classList.add('active');
+}});
+	</script>
+</head>
+<body>
+
+	<header class="header">
+        
+		<div class="logo">Гарячі пропозиції</div>
+	
+		
+        <nav class="nav">
+            <ul>
+                <li><a href="/index">Етапи проектування</a><a href="/koshtoris">Кошторис</a><a href="/offers" class="active">Пропозиції</a></li>
+                <!-- <li></li> -->
+            </ul>
+        </nav>
+	</header>
+	<div id="logo-container">
+
+        <img src="logo.svg" alt="Logo">
+     </div>
+	<main>
+		<div class="product0">
+		<h2>Гарячі пропозиції на паркет вищого класу від нашого партнера LianWood</h2>
+	</div>
+		<div class="product">
+			<div class="product-info">
+				<h2>Паркетна дошка «Натур»</h2>
+				<p> Шаровість:<br>
+					Нижній шар - смерека, 2-4 мм<br>
+					Середній - смерека, поперечна клейка, 8-12 мм<br>
+					Верхній - дуб, 2-6 мм</p>
+				<p>Розміри:<br>
+					Ширина - 120-220 мм<br>
+					Довжина - 600-2800 мм<br>
+					Товщина - 12-22 мм</p>
+			</div>
+			<div class="product-image">
+				<img src="/IMG_6330.png" alt="Товар 1">
+			</div>
+		</div>
+		<div class="product">
+			<div class="product-info">
+				<h2>Паркетна дошка «Рустик»</h2>
+				<p> Шаровість:<br>
+					Нижній шар - смерека, 2-4 мм<br>
+					Середній - смерека, поперечна клейка, 8-12 мм<br>
+					Верхній - дуб, 2-6 мм</p>
+				<p>Розміри:<br>
+					Ширина - 120-220 мм<br>
+					Довжина - 600-2800 мм<br>
+					Товщина - 12-22 мм</p>
+			</div>
+			<div class="product-image">
+				<img src="IMG_6331.png" alt="Товар 2">
+			</div>
+		</div>
+		<div class="product">
+			<div class="product-info">
+				<h2>Паркетна дошка «Селект»</h2>
+				<p> Шаровість:<br>
+					Нижній шар - смерека, 2-4 мм<br>
+					Середній - смерека, поперечна клейка, 8-12 мм<br>
+					Верхній - дуб, 2-6 мм</p>
+				<p>Розміри:<br>
+					Ширина - 120-220 мм<br>
+					Довжина - 600-2800 мм<br>
+					Товщина - 12-22 мм</p>
+			</div>
+			<div class="product-image">
+				<img src="IMG_6332.png" alt="Товар 2">
+			</div>
+		</div>
+		<div class="product">
+			<div class="product-info">
+				<h2>Паркетна дошка COUNTRY</h2>
+				<p> Шаровість:<br>
+					Нижній шар - смерека, 2-4 мм<br>
+                    Середній - смерека, поперечна клейка, 8-12 мм<br>
+                    Верхній - дуб, 2-6 мм</p>
+				<p>Розміри:<br>
+					Ширина - 240/260/280/300 мм<br>
+                    Довжина - 600-2800 мм<br>
+                    Товщина - 18-22 мм</p>
+			</div>
+			<div class="product-image">
+				<img src="IMG_6334.png" alt="Товар 2">
+			</div>
+		</div>
+		<div class="product">
+			<div class="product-info">
+				<h2>Паркетна дошка PRIME</h2>
+				<p> Шаровість:<br>
+					Нижній шар - дуб, 2-4 мм<br>
+                    Середній - дуб, поперечна клейка, 8-12 мм<br>
+                    Верхній - дуб, 2-6 мм</p>
+				<p>Розміри:<br>
+					Ширина - 240/260/280/300 мм<br>
+                    Довжина - 600-2800 мм<br>
+                    Товщина - 18-22 мм</p>
+			</div>
+			<div class="product-image">
+				<img src="IMG_6335.png" alt="Товар 2">
+			</div>
+		</div>
+		<div class="product">
+			<div class="product-info">
+				<h2>Паркетна дошка багатополосна</h2>
+				<p> Шаровість:<br>
+					Нижній шар - смерека, 2-4 мм<br>
+                    Середній - смерека, поперечна клейка, 8-12 мм<br>
+                    Верхній - дуб, 2-6 мм</p>
+				<p>Розміри:<br>
+					Ширина - 200 мм<br>
+                    Довжина - 600-2800 мм<br>
+                    Товщина - 12-22 мм</p>
+			</div>
+			<div class="product-image">
+				<img src="IMG_6336.png" alt="Товар 2">
+			</div>
+		</div>
+</main>
+<footer class="footer">
+    &copy; 2023 SENSE DESIGN STUDIO LVIV
+</footer>
+</body>
+</html>
