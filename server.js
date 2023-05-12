@@ -85,12 +85,72 @@ app.get('/', (req, res) => {
         //   text: 'UPDATE customer_levels SET first_level = true WHERE id = 5'
           
         // }
-        
+        // let myVariable = ' ';
         pool.query(query)
           .then(res => console.log('Дані оновлені успішно'))
           .catch(err => console.error('Помилка при оновленні даних:', err.stack))
-
         });
+        
+          //full table
+          
+app.get('/customer-levels', async (req, res) => {
+  try {
+    const { rows } = await pool.query('SELECT * FROM customer_levels');
+    const table = generateTable(rows);
+    res.send(table);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+function generateTable(rows) {
+  let table = '<table><thead><tr><th>id</th><th>First Level</th><th>Second Level</th><th>Third Level</th><th>Fourth Level</th><th>Fifth Level</th><th>Sixth Level</th></tr></thead><tbody>';
+  for (const row of rows) {
+    table += `<tr><td>${row.customer_id}</td><td>${row.first_level}</td><td>${row.second_level}</td><td>${row.third_level}</td><td>${row.fourth_level}</td><td>${row.fifth_level}</td><td>${row.sixth_level}</td></tr>`;
+  }
+  table += '</tbody></table>';
+  return table;
+}
+app.get('/customer', async (req, res) => {
+  try {
+    const { rows } = await pool.query('SELECT * FROM customers');
+    const table1 = generateTableCustomer(rows);
+    res.send(table1);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+function generateTableCustomer(rows) {
+  let table1 = '<table><thead><tr><th>id</th><th>name</th><th>password</th><th>designer</th><th>start_date</th><th>finish_date</th></tr></thead><tbody>';
+  for (const row of rows) {
+    table1 += `<tr><td>${row.id}</td><td>${row.name}</td><td>${row.password}</td><td>${row.designer}</td><td>${new Date(row.start_date).toLocaleDateString()}</td><td>${new Date(row.finish_date).toLocaleDateString()}</td></tr>`;
+  }
+  table1 += '</tbody></table>';
+  return table1;
+}
+app.get('/customer-areas', async (req, res) => {
+  try {
+    const { rows } = await pool.query('SELECT * FROM customer_areas');
+    const table2 = generateTableCustomerAreas(rows);
+    res.send(table2);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+function generateTableCustomerAreas(rows) {
+  let table2 = '<table><thead><tr><th>id</th><th>bathroom</th><th>hall</th><th>rooms</th><th>kitchen</th><th>others</th></tr></thead><tbody>';
+  for (const row of rows) {
+    table2 += `<tr><td>${row.customer_id}</td><td>${row.bathroom}</td><td>${row.hall}</td><td>${row.rooms}</td><td>${row.kitchen}</td><td>${row.others}</td></tr>`;
+  }
+  table2 += '</tbody></table>';
+  return table2;
+}
+          //---
       }else{
       
       // Виконати запит до бази даних
@@ -178,8 +238,8 @@ app.get('/', (req, res) => {
                     const who = {
                       name: customer_designer.name,
                       designer: customer_designer.designer ,
-                      start_date: new Date(customer_designer.start_date), 
-                      finish_date: new Date(customer_designer.finish_date)
+                      start_date: new Date(customer_designer.start_date).toLocaleDateString(), 
+                      finish_date: new Date(customer_designer.finish_date).toLocaleDateString()
                     };
                     res.send(who);
                   });
