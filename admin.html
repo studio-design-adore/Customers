@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Адміністратор</title>
     <link href="https://fonts.googleapis.com/css?family=Jura&display=swap" rel="stylesheet">
+   
   </head>
 
   <body>
@@ -51,9 +52,27 @@
   justify-content: center;
   /* border: 1px solid #117042; */
 }
-
+.tables-container {
+  opacity: 95%; 
+  background-color: #113c1e;
+  padding: 10px auto;
+  color: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  height: 110%;
+  max-width: 600px;
+  text-align: center;
+  justify-content: center;
+  
+}
+#customer-areas-table{
+  padding-left: 25%;
+  text-align: center;
+  justify-content: center;
+}
 h1 {
-    margin-top: 20%;
+    margin-top: 10%;
   font-size: 27px;
   text-align: center;
 }
@@ -119,7 +138,7 @@ button[type="submitChange"]:hover{
 
 
         <div class="change-container">
-        <p>Адміністраторе, привіт! Тут можна оновлювати дані щодо проєкту для подальшої комуціканії із клієнтом
+        <p>Адміністраторе, привіт! Тут можна оновлювати дані щодо проєкту для подальшої комунікації з клієнтом.
         </p>
       <h1>Внесення змін</h1>
      <form action="/admin" method="POST">
@@ -135,12 +154,56 @@ button[type="submitChange"]:hover{
       <label for="cusVal">Значення:</label>
       <input type="cusVal" name="cusVal">
 
-      <button type="submitChange">Внести зміни</button>
-    </form>
-   
+      <button id="refresh-btn" type="submitChange">Внести зміни</button>
+      <p id="message"></p>
+      </form>
+      <div class="tables-container">
+        <h1>Таблиця customers</h1>
+      <div id="customer-table"></div>
+      <h1>Таблиця customer_levels</h1>
+      <div id="customer-levels-table"></div>
+      <h1>Таблиця customer_areas</h1>
+      <div id="customer-areas-table"></div>
+    </div>
   
+
     </div>
     
+
+
+    <script>
+      function refreshTable() {
+      fetch('/customer-levels')
+      .then(response => response.text())
+      .then(table => {
+        document.getElementById('customer-levels-table').innerHTML = table;
+      })
+      .catch(error => console.error(error));
+
+      fetch('/customer')
+      .then(response => response.text())
+      .then(table1 => {
+        document.getElementById('customer-table').innerHTML = table1;
+      })
+      .catch(error => console.error(error));
+
+      fetch('/customer-areas')
+      .then(response => response.text())
+      .then(table2 => {
+        document.getElementById('customer-areas-table').innerHTML = table2;
+      })
+      .catch(error => console.error(error));
+    }
+    document.getElementById('refresh-btn').addEventListener('click', refreshTable);
+    refreshTable();
+
+
+      
+    
+
+
+  
+    </script>
     
   </body>
 </html>
